@@ -116,6 +116,36 @@ Once approved, the development server starts normally with:
 
 ---
 
+## The 4 Screens
+
+| Route | Screen |
+| --- | --- |
+| `/` | Lab — DNA, mutation, complement, save |
+| `/archive` | Specimen archive |
+| `/evolution` | Simulation over 21 generations |
+| `/design` | Design system case study |
+
+Lab shortcuts: `M` mutate, `R` random sequence, `C` complement, `S` save, `N` new specimen.
+
+## Where is the code
+
+| File | Role |
+| --- | --- |
+| `src/main.tsx` | Entry point |
+| `src/styles.css` | Tailwind + colors + animations |
+| `src/lib/nav.tsx` | Navigation between the 4 pages |
+| `src/features/aequor/model.ts` | DNA rules, without React |
+| `src/features/aequor/lab-context.tsx` | Laboratory state |
+| `src/features/aequor/lab-view.tsx` | Lab screen |
+| `src/features/aequor/archive-view.tsx` | Archive |
+| `src/features/aequor/evolution-view.tsx` | Evolution |
+| `src/features/aequor/design-view.tsx` | Case study |
+| `src/features/aequor/creature.tsx` | SVG creature |
+| `src/features/aequor/shell.tsx` | Header and menu |
+| `src/features/aequor/storage.ts` | Local storage |
+
+
+
 ## 🌊 Summary  
 This simulator is entirely **fictional**.  
 The creatures, genetic data, and abyssal environments are invented to create an interactive and artistic experience.
