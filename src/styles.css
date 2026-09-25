@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+/*
+  Aequor Lab — design tokens.
+  One palette, three typefaces, named once. Components use these utilities
+  (bg-abyss, text-cyan, font-mono…) instead of raw hex in JSX.
+
+  --glow / --body / --base are the only values that change at runtime.
+  A parent with data-variant or data-base sets them; children read var(--glow).
+*/
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-abyss: #03070f;
+  --color-surface: #0a1321;
+  --color-elevated: #0d1a2e;
+  --color-rim: #13223d;
+  --color-fg: #e0f8ff;
+  --color-muted: #a0d8e8;
+
+  --color-cyan: #00f5d4;
+  --color-cyan-deep: #00b8a0;
+  --color-violet: #9d4eff;
+  --color-rose: #ff2e6c;
+  --color-pink: #ff6b9d;
+  --color-teal: #4ecdc4;
+  --color-ice: #00e4ff;
+  --color-phosphate: #eec979;
+
+  --color-adenine: #79eea2;
+  --color-thymine: #cf79ee;
+  --color-cytosine: #ee799d;
+  --color-guanine: #7984ee;
+
+  --color-glow: var(--glow);
+  --color-pass: #79eea2;
+
+  --radius-card: 1rem;
+  --tracking-label: 0.22em;
+  --tracking-hero: 0.32em;
+}
+
+:root {
+  --glow: #00f5d4;
+  --body: #0d3545;
+  --base: #79eea2;
+  color-scheme: dark;
+}
+
+[data-variant="standard"] {
+  --glow: #00f5d4;
+  --body: #0d3545;
+}
+[data-variant="mutated"] {
+  --glow: #ff2e6c;
+  --body: #3d0d20;
+}
+[data-variant="evolved"] {
+  --glow: #9d4eff;
+  --body: #1e0d45;
+}
+[data-variant="rare"] {
+  --glow: #00e4ff;
+  --body: #051828;
+}
+
+[data-base="A"] { --base: #79eea2; }
+[data-base="T"] { --base: #cf79ee; }
+[data-base="C"] { --base: #ee799d; }
+[data-base="G"] { --base: #7984ee; }
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    background: var(--color-abyss);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-abyss);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-cyan) 32%, transparent);
+    color: var(--color-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-cyan) 28%, transparent);
+    border-radius: 99px;
+  }
+}
+
+@layer utilities {
+  .text-glow { color: var(--glow); }
+  .bg-glow { background-color: var(--glow); }
+  .border-glow { border-color: var(--glow); }
+  .bg-glow-soft { background-color: color-mix(in srgb, var(--glow) 8%, transparent); }
+  .border-glow-soft { border-color: color-mix(in srgb, var(--glow) 22%, transparent); }
+  .shadow-glow { box-shadow: 0 0 18px color-mix(in srgb, var(--glow) 22%, transparent); }
+
+  /* Active route is data-status, not a second class string.
+     Tailwind would otherwise resolve both utilities by source order. */
+  .nav-link[data-status="active"],
+  .nav-link[aria-current="page"] {
+    color: var(--glow);
+    border-color: color-mix(in srgb, var(--glow) 22%, transparent);
+    background-color: color-mix(in srgb, var(--glow) 8%, transparent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--glow) 22%, transparent);
+  }
+  .nav-mobile[data-status="active"],
+  .nav-mobile[aria-current="page"] {
+    color: var(--glow);
+  }
+
+  .panel {
+    background: linear-gradient(135deg, var(--color-surface), var(--color-elevated));
+    border: 1px solid color-mix(in srgb, var(--color-cyan) 12%, transparent);
+    border-radius: var(--radius-card);
+  }
+
+  .dna-base {
+    display: inline-flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 2px solid var(--base);
+    background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+    color: var(--base);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 0 8px color-mix(in srgb, var(--base) 22%, transparent);
+    transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+  }
+  .dna-base[data-selected="true"] {
+    background: color-mix(in srgb, var(--base) 18%, transparent);
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--base) 22%, transparent),
+      0 0 20px color-mix(in srgb, var(--base) 40%, transparent);
+    transform: scale(1.12);
+  }
+  .dna-base[data-mutating="true"]:not([data-selected="true"]) {
+    transform: scale(0.9);
+  }
+
+  .motion-pulse { animation: bio-pulse 3.6s ease-in-out infinite; }
+  .motion-float { animation: bio-float 6s ease-in-out infinite; }
+  .motion-enter { animation: fade-up 0.38s ease both; }
+  .motion-flash { animation: mut-flash 0.65s ease-out both; }
+
+  .scan-active {
+    position: relative;
+    overflow: hidden;
+  }
+  .scan-active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5.5rem;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--color-cyan) 42%, transparent),
+      transparent
+    );
+    animation: scan-line 1.3s ease-in-out forwards;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .scan-demo {
+    position: relative;
+    height: 0.7rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-phosphate) 12%, transparent);
+  }
+  .scan-demo::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3.5rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-phosphate) 75%, transparent), transparent);
+    animation: scan-line 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes bio-pulse {
+  0%, 100% { opacity: 0.72; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+@keyframes bio-float {
+  0%, 100% { transform: translateY(0) rotate(-0.7deg); }
+  50% { transform: translateY(-9px) rotate(0.7deg); }
+}
+@keyframes scan-line {
+  0% { transform: translateX(-130%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(520%); opacity: 0; }
+}
+@keyframes mut-flash {
+  0%, 100% { opacity: 0; }
+  35% { opacity: 0.55; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-pulse,
+  .motion-float,
+  .motion-flash,
+  .scan-active::after,
+  .scan-demo::after {
+    animation: none !important;
+  }
+  .motion-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
