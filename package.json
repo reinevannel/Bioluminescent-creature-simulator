@@ -4,9 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+  "dev": "vite",
+  "build": "tsc --noEmit && vite build",
+  "preview": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^0.510.0",
