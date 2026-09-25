@@ -1,126 +1,126 @@
 # 🌌 Bioluminescent Creature Simulator  
-Simulateur interactif de créatures bioluminescentes basé sur des séquences ADN fictives.  
-Projet réalisé dans le cadre du parcours **Codecademy – Front-End Developer**.
+Interactive simulator of bioluminescent creatures based on fictional DNA sequences.  
+Project created as part of the **Codecademy – Front-End Developer** path.
 
-Ce laboratoire fictif permet d’explorer l’impact des mutations génétiques sur la stabilité, la survie et l’adaptation d’organismes abyssaux.  
-L’interface inclut un **case study complet** (wireframes, UI design, flows) intégré au code et servant de base au développement.
+This fictional laboratory allows you to explore the impact of genetic mutations on the stability, survival, and adaptation of abyssal organisms.  
+The interface includes a **complete case study** (wireframes, UI design, flows) integrated into the code and used as the foundation for development.
 
 ---
 
 ## 🧬 Concept  
-Chaque créature est générée à partir d’une séquence ADN dynamique.  
-L’utilisateur peut :
+Each creature is generated from a dynamic DNA sequence.  
+The user can:
 
-- muter la séquence,
-- observer les effets sur la survie,
-- visualiser la créature bioluminescente,
-- archiver les spécimens,
-- analyser les statistiques génétiques.
+- mutate the sequence,
+- observe the effects on survival,
+- visualize the bioluminescent creature,
+- archive specimens,
+- analyze genetic statistics.
 
-Ce projet combine **design narratif**, **visualisation scientifique**, et **interactions front-end**.
+This project combines **narrative design**, **scientific visualization**, and **front-end interactions**.
 
 ---
 
-## 🔬 Fonctionnalités principales
+## 🔬 Main Features
 
 ### 🎛️ Mutation Engine  
-Un moteur de mutation permet de modifier la séquence ADN :
+A mutation engine allows you to modify the DNA sequence:
 
-- `Mutate` — mutation ponctuelle  
-- `Mutate ×5` — série rapide  
-- `Mutate ×10` — mutations intensives  
-- `Randomize` — nouvelle séquence complète  
-- `Complement` — séquence complémentaire  
-- `Save to Archive` — préservation du spécimen
+- `Mutate` — single-point mutation  
+- `Mutate ×5` — rapid series  
+- `Mutate ×10` — intensive mutations  
+- `Randomize` — completely new sequence  
+- `Complement` — complementary sequence  
+- `Save to Archive` — preserve the specimen
 
-Chaque action influence :
+Each action influences:
 
 - **GC Content**  
-- **Stabilité génomique**  
-- **Probabilité de survie**  
-- **Adaptation à la profondeur**
+- **Genomic stability**  
+- **Survival probability**  
+- **Depth adaptation**
 
 ---
 
-## 🗃️ Archive des spécimens  
-Les créatures sauvegardées sont consultables dans une interface dédiée :
+## 🗃️ Specimen Archive  
+Saved creatures can be viewed in a dedicated interface:
 
-- aperçu ADN (bases + preview),
-- rendu visuel de la créature,
-- statistiques clés (GC, mutations, survie, profondeur),
-- badge de variante,
-- ouverture rapide dans le laboratoire.
+- DNA overview (bases + preview),
+- visual rendering of the creature,
+- key statistics (GC, mutations, survival, depth),
+- variant badge,
+- quick open in the laboratory.
 
-L’archive permet de suivre l’évolution des organismes au fil des expérimentations.
+The archive allows you to track the evolution of organisms throughout the experiments.
 
 ---
 
 ## 🎨 Design & UX  
-Ce projet inclut un **case study Figma complet**, intégré au code :
+This project includes a **complete Figma case study**, integrated into the code:
 
 - wireframes,  
-- structure d’information,  
-- UI design bioluminescent,  
-- palette abyssale (cyan, violet, rose, teal),  
-- typographies scientifiques (mono + display),  
-- composants dynamiques (Creature renderer, Stat blocks),  
-- micro‑interactions (hover, glow, scale).
+- information architecture,  
+- bioluminescent UI design,  
+- abyssal color palette (cyan, violet, pink, teal),  
+- scientific typography (mono + display),  
+- dynamic components (Creature renderer, Stat blocks),  
+- micro-interactions (hover, glow, scale).
 
-Le simulateur est conçu comme une **expérience immersive**, inspirée des interfaces de recherche océanique.
-
----
-
-## 🛠️ Stack technique
-
-- **Framework :** React  
-- **State & logique :** hooks personnalisés (lab-context)  
-- **UI :** Tailwind CSS + composants maison  
-- **Icônes :** lucide-react  
-- **Animations :** transitions CSS & motion classes  
-- **Architecture :** modules séparés (lab, archive, model, primitives)
+The simulator is designed as an **immersive experience**, inspired by oceanographic research interfaces.
 
 ---
 
-## 🚀 Démo locale
+## 🛠️ Tech Stack
 
-Pour exécuter le projet en local :
+- **Framework:** React  
+- **State & logic:** custom hooks (lab-context)  
+- **UI:** Tailwind CSS + custom components  
+- **Icons:** lucide-react  
+- **Animations:** CSS transitions & motion classes  
+- **Architecture:** separated modules (lab, archive, model, primitives)
 
-1. Installez **Node.js**.  
-2. Ouvrez le dossier du projet dans votre terminal.  
-3. Installez les dépendances :
+---
+
+## 🚀 Local Demo
+
+To run the project locally:
+
+1. Install **Node.js**.  
+2. Open the project folder in your terminal.  
+3. Install the dependencies:
 
    `npm install`
 
-4. Lancez le serveur de développement :
+4. Start the development server:
 
    `npm run dev`
 
-5. Ouvrez l’URL locale affichée dans le terminal (ex. http://localhost:5173).
+5. Open the local URL displayed in the terminal (e.g. http://localhost:5173).
 
-Vous pouvez maintenant explorer le simulateur directement dans votre navigateur.
+You can now explore the simulator directly in your browser.
 
-   
-## 💡 Note Windows (personnelle)
+---
 
-Sur mon environnement Windows, npm utilise automatiquement le lanceur `npm.cmd`.  
-Lors de l’installation du projet, j’ai dû approuver le script d’installation d’esbuild :
+## 💡 Windows Note (personal)
+
+On my Windows environment, npm automatically uses the `npm.cmd` launcher.  
+During project installation, I had to approve the esbuild installation script:
 
 - `npm.cmd install-scripts approve esbuild`
 - `npm.cmd rebuild esbuild`
 
-C’est un comportement normal sur Windows : certains packages comme **esbuild** nécessitent une validation manuelle pour autoriser leurs scripts post-installation.  
-Une fois approuvé, le serveur de développement démarre normalement avec :
+This is normal behavior on Windows: some packages like **esbuild** require manual validation to allow their post-install scripts.  
+Once approved, the development server starts normally with:
 
 `npm run dev`
 
 ---
 
-## 🌊 Récapitulatif  
-Ce simulateur est entièrement **fictionnel**.  
-Les créatures, données génétiques et environnements abyssaux sont inventés pour créer une expérience interactive et artistique.
+## 🌊 Summary  
+This simulator is entirely **fictional**.  
+The creatures, genetic data, and abyssal environments are invented to create an interactive and artistic experience.
 
 ---
-
-## 📄 Licence  
-Projet open-source destiné à la démonstration front-end et UX/UI.  
-Utilisation libre pour l’apprentissage, l’expérimentation ou l’inspiration.
+## 📄 License  
+Open-source project intended for front-end and UX/UI demonstration.  
+Free to use for learning, experimentation, or inspiration.
