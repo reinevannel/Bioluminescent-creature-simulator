@@ -154,3 +154,10 @@ The creatures, genetic data, and abyssal environments are invented to create an 
 ## 📄 License  
 Open-source project intended for front-end and UX/UI demonstration.  
 Free to use for learning, experimentation, or inspiration.
+
+## ✍️ Author
+
+🦋 **Reine Vannel Studio**  
+UX Designer & Front-End Developer  
+
+**Created with ❤️ — during my Front-End Developer courses on Codecademy.**
